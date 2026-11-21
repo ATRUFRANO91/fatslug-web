@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>FATSLUG – Eat. Get fat. Slime 'em.</title>
+  <meta name="description" content="FATSLUG is a free slither-style arena game. Eat glowing orbs, grow huge, and drop toxic slime to ambush other slugs. Play free in your browser and with friends.">
+  <meta name="theme-color" content="#12261a">
+  <meta property="og:title" content="FATSLUG – Eat. Get fat. Slime 'em.">
+  <meta property="og:description" content="Free slither-style arena game. Grow huge, drop toxic slime, ambush your friends.">
+  <meta property="og:image" content="https://fatslug.com/img/og.jpg">
+  <meta property="og:url" content="https://fatslug.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <style>
+    html, body { margin: 0; height: 100%; background: #12261a; overflow: hidden; touch-action: none; -webkit-user-select: none; user-select: none; }
+    #unity-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; display: block; background: #12261a; outline: none; }
+    #loader { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #fff; background: radial-gradient(circle at 50% 40%, #234a2c, #0d1d12 70%); transition: opacity .4s; }
+    #loader img { width: min(34vmin, 220px); height: auto; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45)); animation: bob 1.6s ease-in-out infinite; }
+    #loader h1 { margin: 0; font-size: clamp(34px, 7vmin, 64px); letter-spacing: 3px; color: #ffc93c; text-shadow: 0 4px 0 #6b3a10; }
+    #loader p { margin: 0; opacity: .8; font-size: clamp(13px, 2.4vmin, 18px); }
+    #bar { width: min(60vw, 360px); height: 14px; border-radius: 10px; background: rgba(255,255,255,.12); overflow: hidden; }
+    #fill { width: 0; height: 100%; border-radius: 10px; background: linear-gradient(90deg, #8be04e, #ffc93c); transition: width .2s; }
+    #rotate { display: none; position: fixed; inset: 0; z-index: 5; align-items: center; justify-content: center; text-align: center; padding: 24px;
+      font-family: system-ui, sans-serif; color: #fff; background: #12261a; font-size: 20px; }
+    @media (orientation: portrait) and (max-width: 820px) { #rotate { display: flex; } }
+    #err { color: #ff8f7f; max-width: 80vw; text-align: center; }
+    @keyframes bob { 50% { transform: translateY(-8px); } }
+  </style>
+</head>
+<body>
+  <canvas id="unity-canvas" tabindex="-1"></canvas>
+  <div id="loader">
+    <img src="img/icon-512.png" alt="FATSLUG mascot">
+    <h1>FATSLUG</h1>
+    <div id="bar"><div id="fill"></div></div>
+    <p id="status">Loading the slime...</p>
+  </div>
+  <div id="rotate">Turn your phone sideways to play FATSLUG 🐌</div>
+  <script>
+    const canvas = document.getElementById("unity-canvas");
+    const fill = document.getElementById("fill");
+    const status = document.getElementById("status");
+    const buildUrl = "Build";
+    const config = {
+      arguments: [],
+      dataUrl: buildUrl + "/ce5d9c77c3f8f378f56794d91bec3643.data.unityweb",
+      frameworkUrl: buildUrl + "/1a13e0f265c0bfd467402fbb5603f4bf.framework.js.unityweb",
+      codeUrl: buildUrl + "/a357c982418a9bc381a141846baaee43.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "FATSLUG",
+      productName: "FATSLUG",
+      productVersion: "1.0",
+      // sharp but not wasteful on retina phones
+      devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+      showBanner: (msg, type) => { if (type === "error") { status.id = "err"; status.textContent = msg; } else console.warn(msg); },
+    };
+    const script = document.createElement("script");
+    script.src = buildUrl + "/dde7d7e4e02f1ad32a0cec4f38b2671c.loader.js";
+    script.onload = () => {
+      createUnityInstance(canvas, config, p => { fill.style.width = Math.round(p * 100) + "%"; })
+        .then(() => {
+          const l = document.getElementById("loader");
+          l.style.opacity = 0;
+          setTimeout(() => l.remove(), 450);
+          canvas.focus();
+        })
+        .catch(e => { status.textContent = "Couldn't start the game: " + e; });
+    };
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>
