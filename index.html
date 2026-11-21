@@ -40,6 +40,26 @@
     <p id="status">Loading the slime...</p>
   </div>
   <div id="rotate">Turn your phone sideways to play FATSLUG 🐌</div>
+  <!-- Ads: Google AdSense H5 Games Ads. OFF until AdSense approves fatslug.com.
+       To turn on: paste the publisher id (ca-pub-...) below. Set FATSLUG_ADS_TEST = true first to see test ads. -->
+  <script>
+    window.FATSLUG_ADSENSE = "";
+    window.FATSLUG_ADS_TEST = false;
+    window.FATSLUG_ADS_ON = false;
+    if (window.FATSLUG_ADSENSE) {
+      const s = document.createElement("script");
+      s.async = true;
+      s.crossOrigin = "anonymous";
+      s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + window.FATSLUG_ADSENSE;
+      s.setAttribute("data-ad-client", window.FATSLUG_ADSENSE);
+      s.setAttribute("data-ad-frequency-hint", "60s");
+      if (window.FATSLUG_ADS_TEST) s.setAttribute("data-adbreak-test", "on");
+      document.head.appendChild(s);
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adBreak = window.adConfig = function (o) { window.adsbygoogle.push(o); };
+      window.FATSLUG_ADS_ON = true;
+    }
+  </script>
   <script>
     const canvas = document.getElementById("unity-canvas");
     const fill = document.getElementById("fill");
@@ -47,9 +67,9 @@
     const buildUrl = "Build";
     const config = {
       arguments: [],
-      dataUrl: buildUrl + "/0c56f290dcb66b5cdf53fc83bc5b6282.data.unityweb",
-      frameworkUrl: buildUrl + "/1ec6b7362bbfc42955dd6cc17f3fb419.framework.js.unityweb",
-      codeUrl: buildUrl + "/a7354b56a394fb8cf9b8991085575e96.wasm.unityweb",
+      dataUrl: buildUrl + "/c4b712ad7579078506c0aa4e16539ae5.data.unityweb",
+      frameworkUrl: buildUrl + "/9f01d30f8c497cbaac0ca9ecee7e4242.framework.js.unityweb",
+      codeUrl: buildUrl + "/c6533bc1ba664ee90ee6e9a4518dbbc2.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "FATSLUG",
       productName: "FATSLUG",
@@ -59,7 +79,7 @@
       showBanner: (msg, type) => { if (type === "error") { status.id = "err"; status.textContent = msg; } else console.warn(msg); },
     };
     const script = document.createElement("script");
-    script.src = buildUrl + "/9c511355a7cb7686b0945bc0f5a0611e.loader.js";
+    script.src = buildUrl + "/cbec278694d2e4d9ab58fe96597c02b8.loader.js";
     script.onload = () => {
       createUnityInstance(canvas, config, p => { fill.style.width = Math.round(p * 100) + "%"; })
         .then(() => {
