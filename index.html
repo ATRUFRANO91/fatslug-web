@@ -3,18 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>FATSLUG – Eat. Get fat. Slime 'em.</title>
-  <meta name="description" content="FATSLUG is a free slither-style arena game. Eat glowing orbs, grow huge, and drop toxic slime to ambush other slugs. Play free in your browser and with friends.">
+  <title>FAT SLUG: Slither, Eat, Slime – Free Online Slither Game</title>
+  <meta name="description" content="FAT SLUG is a free slither game: slither around, eat glowing orbs, get fat and drop toxic slime to ambush other slugs. Play free online in your browser, on iPhone and with friends.">
+  <link rel="canonical" href="https://fatslug.com/">
   <meta name="theme-color" content="#12261a">
-  <meta property="og:title" content="FATSLUG – Eat. Get fat. Slime 'em.">
-  <meta property="og:description" content="Free slither-style arena game. Grow huge, drop toxic slime, ambush your friends.">
+  <meta property="og:site_name" content="FAT SLUG">
+  <meta property="og:title" content="FAT SLUG: Slither, Eat, Slime">
+  <meta property="og:description" content="Free slither game. Eat, grow fat, drop toxic slime and ambush your friends. Play in your browser or on iPhone.">
   <meta property="og:image" content="https://fatslug.com/img/og.jpg">
   <meta property="og:url" content="https://fatslug.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FAT SLUG: Slither, Eat, Slime">
+  <meta name="twitter:description" content="Free slither game. Eat, grow fat, drop toxic slime and ambush your friends.">
+  <meta name="twitter:image" content="https://fatslug.com/img/og.jpg">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"FAT SLUG","alternateName":["FAT SLUG: Slither, Eat, Slime","FATSLUG"],
+   "url":"https://fatslug.com/","image":"https://fatslug.com/img/og.jpg",
+   "description":"FAT SLUG is a free slither game: slither around, eat glowing orbs, get fat and drop toxic slime to ambush other slugs. Play free online in your browser, on iPhone and with friends.",
+   "genre":["Action","Arcade","Multiplayer","Battle Royale"],"gamePlatform":["Web browser","iOS"],"applicationCategory":"Game","operatingSystem":"Any",
+   "playMode":["SinglePlayer","MultiPlayer"],"numberOfPlayers":{"@type":"QuantitativeValue","minValue":1,"maxValue":8},
+   "author":{"@type":"Person","name":"Alexander Rufrano"},
+   "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
   <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <style>
+    #loader .tag { opacity: .9; font-weight: 600; }
     html, body { margin: 0; height: 100%; background: #12261a; overflow: hidden; touch-action: none; -webkit-user-select: none; user-select: none; }
     #unity-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; display: block; background: #12261a; outline: none; }
     #loader { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
@@ -34,12 +49,13 @@
 <body>
   <canvas id="unity-canvas" tabindex="-1"></canvas>
   <div id="loader">
-    <img src="img/icon-512.png" alt="FATSLUG mascot">
-    <h1>FATSLUG</h1>
+    <img src="img/icon-512.png" alt="FAT SLUG mascot, a fat green slug">
+    <h1>FAT SLUG</h1>
+    <p class="tag">Slither, eat, slime. Free online slither game.</p>
     <div id="bar"><div id="fill"></div></div>
     <p id="status">Loading the slime...</p>
   </div>
-  <div id="rotate">Turn your phone sideways to play FATSLUG 🐌</div>
+  <div id="rotate">Turn your phone sideways to play FAT SLUG 🐌</div>
   <!-- Ads: Google AdSense H5 Games Ads. OFF until AdSense approves fatslug.com.
        To turn on: paste the publisher id (ca-pub-...) below. Set FATSLUG_ADS_TEST = true first to see test ads. -->
   <script>
@@ -92,5 +108,6 @@
     };
     document.body.appendChild(script);
   </script>
+  <noscript><h2>FAT SLUG: Slither, Eat, Slime</h2><p>FAT SLUG is a free slither game. Slither around the arena, eat glowing orbs to grow fat, and drop toxic slime to ambush other slugs. Modes: Classic, Slime Royale and Coin Rush. Five maps, hats, pets and private rooms with friends. Turn on JavaScript to play.</p></noscript>
 </body>
 </html>
