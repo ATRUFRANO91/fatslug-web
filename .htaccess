@@ -15,7 +15,12 @@
   </FilesMatch>
   # build files have hashed names and images are versioned (-v2), so they can be cached for a long time.
   # Change an image? Give it a new name (-v3) or browsers keep the old one for a year.
-  <FilesMatch "\.(unityweb|png|jpg)$">
+  # no-transform: stops the host/CDN from compressing the already-Brotli files a second time. Without it the
+  # browser only removed one layer and Unity had to unpack the rest in slow JavaScript (Nov 22 lab test).
+  <FilesMatch "\.unityweb$">
+    Header set Cache-Control "public, max-age=31536000, immutable, no-transform"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "index\.html$">
@@ -28,4 +33,8 @@
 </IfModule>
 <IfModule mod_deflate.c>
   SetEnvIfNoCase Request_URI "\.unityweb$" no-gzip
+</IfModule>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule \.unityweb$ - [E=no-gzip:1,E=no-brotli:1]
 </IfModule>
