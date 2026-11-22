@@ -1,0 +1,13 @@
+{
+  "name": "FAT SLUG: Slither, Eat, Slime",
+  "short_name": "FAT SLUG",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#12261a",
+  "theme_color": "#12261a",
+  "icons": [
+    { "src": "/img/icon-192-v2.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/img/icon-512-v2.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
