@@ -1,0 +1,2 @@
+OWNERDOMAIN=fatslug.com
+ironsrc.com, 703345, DIRECT
