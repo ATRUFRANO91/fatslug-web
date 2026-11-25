@@ -87,9 +87,9 @@
     const buildUrl = "Build";
     const config = {
       arguments: [],
-      dataUrl: buildUrl + "/d56829d3aa1f4ed7dffb2438b0d37d23.data.unityweb",
-      frameworkUrl: buildUrl + "/ddb8f0b01dd0d6656f12e5f9f52f8444.framework.js.unityweb",
-      codeUrl: buildUrl + "/2756eefdfd7e78b4701d69612415f85e.wasm.unityweb",
+      dataUrl: buildUrl + "/110f02350844bc454aef271c1336029a.data.unityweb",
+      frameworkUrl: buildUrl + "/8d181b18c952ba4dc74af4e5156d5b73.framework.js.unityweb",
+      codeUrl: buildUrl + "/91639e46483704b762cf8a92a26a2a9b.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "FATSLUG",
       productName: "FATSLUG",
@@ -99,7 +99,7 @@
       showBanner: (msg, type) => { if (type === "error") { status.id = "err"; status.textContent = msg; } else console.warn(msg); },
     };
     const script = document.createElement("script");
-    script.src = buildUrl + "/a1e2b125ceb04a4a256391ba99604e65.loader.js";
+    script.src = buildUrl + "/57605f876255d04d146779f7bb76f6a1.loader.js";
     script.onload = () => {
       createUnityInstance(canvas, config, p => { fill.style.width = Math.round(p * 100) + "%"; })
         .then(() => {
